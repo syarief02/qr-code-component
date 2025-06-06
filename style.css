@@ -1,105 +1,123 @@
-      :root {
-          /* Palette from the style guide */
-          --color-white: hsl(0, 0%, 100%);
-          --color-slate-300: hsl(212, 45%, 89%);
-          --color-slate-500: hsl(216, 15%, 48%);
-          --color-slate-900: hsl(218, 44%, 22%);
-      }
+:root {
+    /* Palette from the style guide */
+    --color-white: hsl(0, 0%, 100%);
+    --color-slate-300: hsl(212, 45%, 89%);
+    --color-slate-500: hsl(216, 15%, 48%);
+    --color-slate-900: hsl(218, 44%, 22%);
+}
 
-      /* 3.1 Reset box-sizing so padding/borders don’t blow up widths */
-      *,
-      *::before,
-      *::after {
-          box-sizing: border-box;
-      }
+/* 1. Reset box-sizing so padding/borders don’t blow up widths */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
-      /* 3.2 Body: set background, font-family, and center content */
-      body {
-          margin: 0;
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          /* stack children vertically */
-          align-items: center;
-          /* center horizontally */
-          justify-content: center;
-          /* center vertically */
-          background-color: var(--color-slate-300);
-          font-family: "Outfit", sans-serif;
-          color: var(--color-slate-900);
-          /* default text color */
-      }
+/* 2. Base/global styles */
+body {
+    margin: 0;
+    min-height: 100vh;
 
-      /* 3.3 Make images responsive by default */
-      img {
-          max-width: 100%;
-          display: block;
-      }
+    /* Use flex-container with column direction for vertical+horizontal centering */
+    display: flex;
+    flex-direction: column;
+    /* stack children vertically */
+    align-items: center;
+    /* center horizontally */
+    justify-content: center;
+    /* center vertically */
 
-      /* The white card container */
-      .card {
-          background-color: hsl(0, 0%, 100%);
-          /* White */
-          border-radius: 20px;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-          width: 295px;
-          /* Mobile width from design (375px design scaled down) */
-          padding: 24px;
-          text-align: center;
-      }
+    background-color: var(--color-slate-300);
+    font-family: "Outfit", sans-serif;
+    color: var(--color-slate-900);
+    /* default text color */
+}
 
-      /* QR code image */
-      .card img {
-          width: 100%;
-          border-radius: 8px;
-          margin-bottom: 20px;
-      }
+/* 3. Make images responsive by default */
+/* Changed max-width to a clamp() for extra flexibility */
+img {
+    /* clamp(min, preferred, max) → here it will never exceed 100% of its container */
+    max-width: clamp(0%, 100%, 100%);
+    display: block;
+    height: auto;
+}
 
-      /* Heading text */
-      .card h1 {
-          font-size: 18px;
-          /* As specified: ~18px */
-          font-weight: 700;
-          color: hsl(218, 44%, 22%);
-          /* Slate 900 */
-          margin: 0 0 16px;
-          line-height: 1.3;
-      }
+/* 4. The white card container */
+.card {
+    background-color: var(--color-white);
+    border-radius: 1.25rem;
+    /* 20px ÷ 16 = 1.25rem */
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.1);
+    /* (10px = 0.625rem, 20px = 1.25rem) */
 
-      /* Paragraph text */
-      .card p {
-          font-size: 15px;
-          /* As specified in style-guide.md */
-          font-weight: 400;
-          color: hsl(216, 15%, 48%);
-          /* Slate 500 */
-          line-height: 1.5;
-          margin: 0;
-      }
+    /* fluid width down to very small screens, then cap via clamp() */
+    width: clamp(18rem, 90%, 21.875rem);
+    /*   18rem  = 18 × 16 = 288px (slightly below 295px)  
+       21.875rem = 21.875 × 16 = 350px (max at tablet+)  */
 
+    padding: 1.5rem;
+    /* 24px ÷ 16 = 1.5rem */
+    text-align: center;
+}
 
-      /* Attribution (show “Challenge by…” at the bottom) */
-      .attribution {
-          font-size: 11px;
-          text-align: center;
-          margin-top: 20px;
-          color: hsl(216, 15%, 48%);
-          /* Slate 500 */
-      }
+/* 5. QR code image inside the card */
+.card img {
+    width: 100%;
+    border-radius: 0.5rem;
+    /* 8px ÷ 16 = 0.5rem */
+    margin-block-end: 1.25rem;
+    /* 20px ÷ 16 = 1.25rem; logical property replaces margin-bottom */
+}
 
-      .attribution a {
-          color: hsl(228, 45%, 44%);
-          text-decoration: none;
-      }
+/* 6. Heading text */
+.card h1 {
+    font-size: 1.125rem;
+    /* 18px ÷ 16 = 1.125rem */
+    font-weight: 700;
+    color: var(--color-slate-900);
+    margin: 0 0 1rem;
+    /* bottom margin = 16px ÷ 16 = 1rem */
+    line-height: 1.3;
+}
 
-      .attribution a:hover {
-          text-decoration: underline;
-      }
+/* 7. Paragraph (body copy) */
+.card p {
+    font-size: 0.9375rem;
+    /* 15px ÷ 16 = 0.9375rem */
+    font-weight: 400;
+    color: var(--color-slate-500);
+    line-height: 1.5;
+    margin: 0;
+}
 
-      /* Slightly larger card on tablet+ */
-      @media (min-width: 768px) {
-          .card {
-              max-width: 350px;
-              padding: 32px;
-          }
-      }
+/* 8. Attribution (show “Challenge by…” at the bottom) */
+.attribution {
+    font-size: 0.6875rem;
+    /* 11px ÷ 16 ≈ 0.6875rem */
+    text-align: center;
+    margin-block-start: 1.25rem;
+    /* 20px ÷ 16 = 1.25rem; logical property replaces margin-top */
+    color: var(--color-slate-500);
+}
+
+.attribution a {
+    color: var(--color-slate-900);
+    text-decoration: none;
+}
+
+.attribution a:hover {
+    text-decoration: underline;
+}
+
+/* 9. Slightly larger card on tablet+ */
+/* Converted 768px → 48rem (48 × 16 = 768) */
+@media (min-width: 48rem) {
+    .card {
+        /* Instead of a max-width: 350px, we can use rem: 350px ÷ 16 ≈ 21.875rem */
+        max-width: 21.875rem;
+        /* freeze at 350px on larger screens */
+
+        /* padding: 32px ÷ 16 = 2rem */
+        padding: 2rem;
+    }
+}
