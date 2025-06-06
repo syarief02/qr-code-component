@@ -29,8 +29,8 @@ This repository contains my solution to the [QR Code Component challenge on Fron
 
 ### Links
 
-- **Solution URL:** [https://github.com/syariefazman/qr-code-component](https://github.com/syarief02/qr-code-component.git)  
-- **Live Site URL:** [https://syariefazman.github.io/qr-code-component/](https://syarief02.github.io/qr-code-component/)  
+- **Solution URL:** [https://github.com/syarief02/qr-code-component.git](https://github.com/syarief02/qr-code-component.git)  
+- **Live Site URL:** [https://syarief02.github.io/qr-code-component/](https://syarief02.github.io/qr-code-component/)  
 
 ---
 
