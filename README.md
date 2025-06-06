@@ -23,13 +23,13 @@ This repository contains my solution to the [QR Code Component challenge on Fron
 
 ### Screenshot
 
-![QR Code Component Preview](./screenshot.png)
+![QR Code Component Preview](./screenshot.PNG)
 
 > The screenshot above shows the final QR code card centered on a light‐blue background, with the correct HSL color values, “Outfit” typography, and responsive sizing.  
 
 ### Links
 
-- **Solution URL:** [https://github.com/syariefazman/qr-code-component](https://github.com/syariefazman/qr-code-component)  
+- **Solution URL:** [https://github.com/syariefazman/qr-code-component](https://github.com/syarief02/qr-code-component.git)  
 - **Live Site URL:** [https://syariefazman.github.io/qr-code-component/](https://syariefazman.github.io/qr-code-component/)  
 
 ---
